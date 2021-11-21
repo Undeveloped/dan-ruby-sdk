@@ -5,8 +5,6 @@ module Dan
         class Action
           attr_reader :client, :resource, :method, :href, :params
 
-          class InvalidParamError < StandardError; end
-
           ARG_MAP = {
             'integer' => Integer,
             'string' => String
@@ -21,31 +19,11 @@ module Dan
           end
 
           def call(args = {})
-            validate_params!(args)
-
             client.authenticated do
-              client.request(method, href, args, true)
+              client.request(method, href, args.slice(*params.keys), true)
 
               resource.get
             end
-          end
-
-          private
-
-          def validate_params!(args)
-            args.each_pair do |key, value|
-              validate_param!(key, value)
-            end
-          end
-
-          def validate_param!(key, value)
-            raise InvalidParamError unless params[key]
-
-            raise InvalidParamError if params[key].is_a?(Array) && !params[key].include?(value)
-
-            return if params[key].is_a?(Array)
-
-            raise InvalidParamError unless value.is_a?(ARG_MAP[params[key]])
           end
         end
       end

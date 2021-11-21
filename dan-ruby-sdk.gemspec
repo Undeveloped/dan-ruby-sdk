@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'dan-ruby-sdk'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.summary     = 'DAN.com Ruby SDK'
   s.description = 'SDK for DAN.com API'
   s.authors     = ['Łukasz Potępa']
