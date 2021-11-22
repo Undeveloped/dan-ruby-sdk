@@ -3,10 +3,10 @@ module Dan
     module Resources
       class Client < Base
         ATTRIBUTES = %i[
-          address1 address2 bank_code bank_name billing_name city client_type
-          company country country_code currency_code dan_distribution_network_id
-          email display_name iban_number phone registration vat_number zip
-          payout_method bank_accounts
+          address1 address2 billing_name city client_type
+          company country_code dan_distribution_network_id
+          billing_email phone vat_number zip
+          payout_method bank_accounts paypal_accounts
         ].freeze
         attr_reader(*ATTRIBUTES)
 

@@ -26,7 +26,7 @@ module Dan
       end
 
       def authenticate!
-        return jwt_token if jwt_token.present?
+        return jwt_token if jwt_token
 
         response = request(
           :post,
